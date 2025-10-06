@@ -9,12 +9,12 @@ for peso in [int(n) for n in input("Pesos separados por espaço: ").split(" ")]:
             continue
         elif capacidade == peso:
             melhores_preenchimentos[peso] = max(1, melhor_anterior[peso])
-        elif melhores_preenchimentos[capacidade - peso] == 0:
+        elif melhor_anterior[capacidade - peso] == 0:
             continue
 
         melhores_preenchimentos[capacidade] = max(melhor_anterior[capacidade - peso] + 1, melhor_anterior[capacidade])
     
     melhor_anterior = melhores_preenchimentos.copy()
-
+    
 melhor_preenchimento = melhores_preenchimentos[capacidade_elevador]
 print(melhor_preenchimento if melhor_preenchimento > 0 else "impossivel")
